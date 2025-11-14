@@ -41,9 +41,9 @@ player setAnimSpeedCoef 1;
 ["Open", [true]] call BIS_fnc_arsenal;
 
 /*===================================耐力===================================*/
-// 设置启用耐力系统
-player enableStamina true;
+// 设置关闭耐力系统
+player enableStamina false;
 
 // 设置枪械后坐力与摇晃(0-1)
-player setCustomAimCoef 0.0;
-player setUnitRecoilCoefficient 0.0；
+player setCustomAimCoef 0;
+player setUnitRecoilCoefficient 0;
