@@ -37,6 +37,9 @@ player allowdamage false;
 // 设置玩家移动速度(1为默认速度)
 player setAnimSpeedCoef 1;
 
+// 打开虚拟军火库
+["Open", [true]] call BIS_fnc_arsenal;
+
 /*===================================耐力===================================*/
 // 设置启用耐力系统
 player enableStamina true;
