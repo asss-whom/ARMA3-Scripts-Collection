@@ -118,5 +118,4 @@ if (side player == independent) then
 [player, _requester, _heliProvider] call BIS_fnc_addSupportLink;
 [player, _requester, _bombProvider] call BIS_fnc_addSupportLink;
 [player, _requester, _dropProvider] call BIS_fnc_addSupportLink;
-
 [player, _requester, _trspProvider] call BIS_fnc_addSupportLink;
