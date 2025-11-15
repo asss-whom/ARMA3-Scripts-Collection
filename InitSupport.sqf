@@ -1,7 +1,11 @@
 _center       = createCenter side player; // side player
 _playerGroup  = createGroup _center; // modules group
 _requester    = _playerGroup createUnit ["SupportRequester", getpos player, [], 0, "FORM"]; // support requester
-_pos          = [player, 1000, (floor (random 360))] call BIS_fnc_relPos; // create random spawn position
+_pos          = player getPos [5000, (floor (random 360))]; // create random spawn position
+while { _pos select 2 < 0 } do // position is in the sea
+{
+    _pos      = player getPos [5000, (floor (random 360))]; // create random spawn position
+};
 
 _artyProvider = _playerGroup createUnit ["SupportProvider_Virtual_Artillery", _pos, [], 0, "FORM"]; // init Artillery support provider
 _heliProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Heli", _pos, [], 0, "FORM"]; // init CAS_Heli support provider
@@ -18,7 +22,8 @@ _trspProvider = _playerGroup createUnit ["SupportProvider_Virtual_Transport", _p
 [_requester, "Transport", 0] call BIS_fnc_limitSupport;
 
 // setup provider values
-if (side player == west) then {
+if (side player == west) then
+{
     _artyProvider setVariable ["BIS_SUPP_crateInit", ""];
     _artyProvider setVariable ["BIS_SUPP_vehicles", ["B_Mortar_01_F", "B_MBT_01_arty_F", "B_MBT_01_mlrs_F"]];
     _artyProvider setVariable ["BIS_SUPP_vehicleinit", ""];
@@ -45,7 +50,8 @@ if (side player == west) then {
     _trspProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 };
 
-if (side player == east) then {
+if (side player == east) then
+{
     _artyProvider setVariable ["BIS_SUPP_crateInit", ""];
     _artyProvider setVariable ["BIS_SUPP_vehicles", ["O_Mortar_01_F", "O_MBT_02_arty_F"]];
     _artyProvider setVariable ["BIS_SUPP_vehicleinit", ""];
@@ -72,7 +78,8 @@ if (side player == east) then {
     _trspProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 };
 
-if (side player == independent) then {
+if (side player == independent) then
+{
     _artyProvider setVariable ["BIS_SUPP_crateInit", ""];
     _artyProvider setVariable ["BIS_SUPP_vehicles", ["I_Mortar_01_F", "I_Truck_02_MRL_F"]];
     _artyProvider setVariable ["BIS_SUPP_vehicleinit", ""];
@@ -111,4 +118,5 @@ if (side player == independent) then {
 [player, _requester, _heliProvider] call BIS_fnc_addSupportLink;
 [player, _requester, _bombProvider] call BIS_fnc_addSupportLink;
 [player, _requester, _dropProvider] call BIS_fnc_addSupportLink;
+
 [player, _requester, _trspProvider] call BIS_fnc_addSupportLink;
