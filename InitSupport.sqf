@@ -1,10 +1,10 @@
 _center       = createCenter side player; // side player
 _playerGroup  = createGroup _center; // modules group
 _requester    = _playerGroup createUnit ["SupportRequester", getpos player, [], 0, "FORM"]; // support requester
-_pos          = player getPos [5000, (floor (random 360))]; // create random spawn position
+_pos          = player getPos [2000, (floor (random 360))]; // create random spawn position
 while { _pos select 2 < 0 } do // position is in the sea
 {
-    _pos      = player getPos [5000, (floor (random 360))]; // create random spawn position
+    _pos      = player getPos [2000, (floor (random 360))]; // create random spawn position
 };
 
 _artyProvider = _playerGroup createUnit ["SupportProvider_Virtual_Artillery", _pos, [], 0, "FORM"]; // init Artillery support provider
