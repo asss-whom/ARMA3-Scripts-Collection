@@ -39,7 +39,7 @@ if (side player == west) then
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
-    _dropProvider setVariable ["BIS_SUPP_crateInit", ""];
+    _dropProvider setVariable ["BIS_SUPP_crateInit", '_this addItemCargo ["optic_Nightstalker", 1]; _this addItemCargo ["muzzle_snds_H", 1]; _this addItemCargo ["acc_pointer_IR", 1]; _this addItemCargo ["H_HelmetSpecB", 1]; _this addItemCargo ["NVGoggles", 1];'];
     _dropProvider setVariable ["BIS_SUPP_vehicles", ["B_Heli_Transport_01_F", "B_Heli_Transport_03_F"]];
     _dropProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _dropProvider setVariable ["BIS_SUPP_filter", "SIDE"];
@@ -67,7 +67,7 @@ if (side player == east) then
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
-    _dropProvider setVariable ["BIS_SUPP_crateInit", ""];
+    _dropProvider setVariable ["BIS_SUPP_crateInit", '_this addItemCargo ["optic_Nightstalker", 1]; _this addItemCargo ["muzzle_snds_H", 1]; _this addItemCargo ["acc_pointer_IR", 1]; _this addItemCargo ["H_HelmetSpecB", 1]; _this addItemCargo ["NVGoggles", 1];'];
     _dropProvider setVariable ["BIS_SUPP_vehicles", ["O_Heli_Transport_04_ammo_F"]];
     _dropProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _dropProvider setVariable ["BIS_SUPP_filter", "SIDE"];
@@ -95,7 +95,7 @@ if (side player == independent) then
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
-    _dropProvider setVariable ["BIS_SUPP_crateInit", ""];
+    _dropProvider setVariable ["BIS_SUPP_crateInit", '_this addItemCargo ["optic_Nightstalker", 1]; _this addItemCargo ["muzzle_snds_H", 1]; _this addItemCargo ["acc_pointer_IR", 1]; _this addItemCargo ["H_HelmetSpecB", 1]; _this addItemCargo ["NVGoggles", 1];'];
     _dropProvider setVariable ["BIS_SUPP_vehicles", ["I_Heli_Transport_02_F"]];
     _dropProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _dropProvider setVariable ["BIS_SUPP_filter", "SIDE"];
