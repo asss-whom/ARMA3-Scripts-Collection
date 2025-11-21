@@ -2,7 +2,7 @@ _center       = createCenter side player; // side player
 _playerGroup  = createGroup _center; // modules group
 _requester    = _playerGroup createUnit ["SupportRequester", getpos player, [], 0, "FORM"]; // support requester
 
-_artyProvider = _playerGroup createUnit ["SupportProvider_Virtual_Artillery", player getPos [5000, (floor (random 360))], [], 0, "FORM"]; // init Artillery support provider
+_artyProvider = _playerGroup createUnit ["SupportProvider_Virtual_Artillery", player getPos [3000, (floor (random 360))], [], 0, "FORM"]; // init Artillery support provider
 _heliProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Heli", player getPos [1000, (floor (random 360))], [], 0, "FORM"]; // init CAS_Heli support provider
 _bombProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Bombing", player getPos [2000, (floor (random 360))], [], 0, "FORM"]; // init CAS_Bombing support provider
 _dropProvider = _playerGroup createUnit ["SupportProvider_Virtual_Drop", player getPos [1000, (floor (random 360))], [], 0, "FORM"]; // init Drop support provider     
