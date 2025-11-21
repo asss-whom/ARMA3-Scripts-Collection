@@ -1,17 +1,12 @@
 _center       = createCenter side player; // side player
 _playerGroup  = createGroup _center; // modules group
 _requester    = _playerGroup createUnit ["SupportRequester", getpos player, [], 0, "FORM"]; // support requester
-_pos          = player getPos [500, (floor (random 360))]; // create random spawn position
-while { _pos select 2 < 0 } do // position is in the sea
-{
-    _pos      = player getPos [500, (floor (random 360))]; // create random spawn position
-};
 
-_artyProvider = _playerGroup createUnit ["SupportProvider_Virtual_Artillery", _pos, [], 0, "FORM"]; // init Artillery support provider
-_heliProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Heli", _pos, [], 0, "FORM"]; // init CAS_Heli support provider
-_bombProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Bombing", _pos, [], 0, "FORM"]; // init CAS_Bombing support provider
-_dropProvider = _playerGroup createUnit ["SupportProvider_Virtual_Drop", _pos, [], 0, "FORM"]; // init Drop support provider     
-_trspProvider = _playerGroup createUnit ["SupportProvider_Virtual_Transport", _pos, [], 0, "FORM"]; // init Transport support provider
+_artyProvider = _playerGroup createUnit ["SupportProvider_Virtual_Artillery", player getPos [5000, (floor (random 360))], [], 0, "FORM"]; // init Artillery support provider
+_heliProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Heli", player getPos [1000, (floor (random 360))], [], 0, "FORM"]; // init CAS_Heli support provider
+_bombProvider = _playerGroup createUnit ["SupportProvider_Virtual_CAS_Bombing", player getPos [2000, (floor (random 360))], [], 0, "FORM"]; // init CAS_Bombing support provider
+_dropProvider = _playerGroup createUnit ["SupportProvider_Virtual_Drop", player getPos [1000, (floor (random 360))], [], 0, "FORM"]; // init Drop support provider     
+_trspProvider = _playerGroup createUnit ["SupportProvider_Virtual_Transport", player getPos [1000, (floor (random 360))], [], 0, "FORM"]; // init Transport support provider
 
 // reset support requests for each type
 [_requester, "Artillery", 0] call BIS_fnc_limitSupport;
