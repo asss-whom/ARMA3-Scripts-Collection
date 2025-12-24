@@ -30,7 +30,7 @@ if (side player == west) then
     _heliProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
     _bombProvider setVariable ["BIS_SUPP_crateInit", ""];
-    _bombProvider setVariable ["BIS_SUPP_vehicles", ["B_Plane_Fighter_01_F", "B_Plane_Fighter_01_Stealth_F"]];
+    _bombProvider setVariable ["BIS_SUPP_vehicles", ["B_Plane_Fighter_01_F", "B_Plane_Fighter_01_Cluster_F"]];
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
