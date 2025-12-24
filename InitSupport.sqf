@@ -30,7 +30,7 @@ if (side player == west) then
     _heliProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
     _bombProvider setVariable ["BIS_SUPP_crateInit", ""];
-    _bombProvider setVariable ["BIS_SUPP_vehicles", ["B_Plane_CAS_01_F", "B_Plane_CAS_01_Cluster_F"]];
+    _bombProvider setVariable ["BIS_SUPP_vehicles", ["B_Plane_Fighter_01_F", "B_Plane_Fighter_01_Stealth_F"]];
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
@@ -58,7 +58,7 @@ if (side player == east) then
     _heliProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
     _bombProvider setVariable ["BIS_SUPP_crateInit", ""];
-    _bombProvider setVariable ["BIS_SUPP_vehicles", ["O_Plane_CAS_02_F", "O_Plane_CAS_02_Cluster_F"]];
+    _bombProvider setVariable ["BIS_SUPP_vehicles", ["O_Plane_Fighter_02_F", "O_Plane_Fighter_02_Cluster_F"]];
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
@@ -86,7 +86,7 @@ if (side player == independent) then
     _heliProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
     _bombProvider setVariable ["BIS_SUPP_crateInit", ""];
-    _bombProvider setVariable ["BIS_SUPP_vehicles", ["I_Plane_Fighter_03_CAS_F", "I_Plane_Fighter_03_Cluster_F"]];
+    _bombProvider setVariable ["BIS_SUPP_vehicles", ["I_Plane_Fighter_04_F", "I_Plane_Fighter_04_Cluster_F"]];
     _bombProvider setVariable ["BIS_SUPP_vehicleinit", ""];
     _bombProvider setVariable ["BIS_SUPP_filter", "SIDE"];
 
