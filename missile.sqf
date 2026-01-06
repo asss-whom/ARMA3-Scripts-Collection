@@ -42,7 +42,7 @@ _i = 0;
 {
     private _target = _x;
     if (side _target == opfor) then {
-        if (_target isKindOf "Land") then {
+        if (_target isKindOf "Land" || _target isKindOf "Ship") then {
             _missile = createVehicle ["Missile_AGM_01_F", player modelToWorld [0, 0, 50], [], 0, "CAN_COLLIDE"];
             _missile setDir getDir player;
             _missile setMissileTarget [_target, true];
@@ -53,4 +53,4 @@ _i = 0;
             _missile setMissileTarget [_target, true];
         };
     };
-} forEach vehicles;
+} forEach allMissionObjects "All";
