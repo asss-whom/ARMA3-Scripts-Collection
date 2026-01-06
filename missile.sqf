@@ -1,5 +1,5 @@
 /*
-	Mk41 VLS发射脚本v1.0
+	导弹发射脚本v1.0
 	作者：Asss_whom
 	简介：简易的Mk41 VLS发射脚本，该脚本获取所有可用VLS并依次随机向OPFOR方载具发射一枚导弹。
 */
@@ -29,6 +29,28 @@ _i = 0;
         };
         if (_i == _length) then {
             break;
+        };
+    };
+} forEach vehicles;
+
+/*
+	导弹发射脚本v1.0
+	作者：Asss_whom
+	简介：从头顶50米处向所有OPFOR方单位发射一枚导弹
+*/
+
+{
+    private _target = _x;
+    if (side _target == opfor) then {
+        if (_target isKindOf "Land") then {
+            _missile = createVehicle ["Missile_AGM_01_F", player modelToWorld [0, 0, 50], [], 0, "CAN_COLLIDE"];
+            _missile setDir getDir player;
+            _missile setMissileTarget [_target, true];
+        };
+        if (_target isKindOf "Air") then {
+            _missile = createVehicle ["Missile_AA_03_F", player modelToWorld [0, 0, 50], [], 0, "CAN_COLLIDE"];
+            _missile setDir getDir player;
+            _missile setMissileTarget [_target, true];
         };
     };
 } forEach vehicles;
