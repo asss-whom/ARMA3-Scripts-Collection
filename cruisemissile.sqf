@@ -1,0 +1,34 @@
+/*
+	Mk41 VLS发射脚本v1.0
+	作者：Asss_whom
+	简介：简易的Mk41 VLS发射脚本，该脚本获取所有可用VLS并依次随机向OPFOR方载具发射一枚导弹。
+*/
+
+_all_vls = [];
+
+{
+    private _vls = _x;
+    if (typeOf _vls == "B_Ship_MRLS_01_F") then {
+        _all_vls pushBack _vls;
+    };
+} forEach vehicles;
+
+_length = count _all_vls;
+_i = 0;
+
+{
+    private _target = _x;
+    if (side _target == opfor) then {
+        _laser = createVehicle ["LaserTargetW", getPosATL _target];
+        _laser attachTo [_target, [0, 0, 1]];
+        west reportRemoteTarget [_laser, 3600];
+        _vls = _all_vls select _i;
+        _handle = _vls fireAtTarget [_laser, currentWeapon _vls];
+        if (_handle) then {
+            _i = _i + 1;
+        };
+        if (_i == _length) then {
+            break;
+        };
+    };
+} forEach vehicles;
