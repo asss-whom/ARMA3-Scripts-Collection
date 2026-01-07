@@ -36,21 +36,21 @@ _i = 0;
 /*
 	导弹发射脚本v1.0
 	作者：Asss_whom
-	简介：从头顶50米处向所有OPFOR方单位发射一枚导弹
+	简介：从头顶50米处向所有OPFOR方载具发射一枚导弹
 */
 
 {
-    private _target = _x;
-    if (side _target == opfor) then {
-        if (_target isKindOf "Land" || _target isKindOf "Ship") then {
-            _missile = createVehicle ["Missile_AGM_01_F", player modelToWorld [0, 0, 50], [], 0, "CAN_COLLIDE"];
+    private _obj = _x;
+    if (side player getFriend side _obj < 0.6) then {
+        if (_obj isKindOf "Land" || _obj isKindOf "Ship") then {
+            _missile = createVehicle ["Missile_AGM_01_F", player modelToWorld [0, 0, 100], [], 0, "CAN_COLLIDE"];
             _missile setDir getDir player;
-            _missile setMissileTarget [_target, true];
+            _missile setMissileTarget [_obj, true];
         };
-        if (_target isKindOf "Air") then {
-            _missile = createVehicle ["Missile_AA_03_F", player modelToWorld [0, 0, 50], [], 0, "CAN_COLLIDE"];
+        if (_obj isKindOf "Air") then {
+            _missile = createVehicle ["Missile_AA_03_F", player modelToWorld [0, 0, 100], [], 0, "CAN_COLLIDE"];
             _missile setDir getDir player;
-            _missile setMissileTarget [_target, true];
+            _missile setMissileTarget [_obj, true];
         };
     };
-} forEach allMissionObjects "All";
+} forEach vehicles;
