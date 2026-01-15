@@ -47,3 +47,17 @@ player enableStamina false;
 // 设置枪械后坐力与摇晃(0-1)
 player setCustomAimCoef 0;
 player setUnitRecoilCoefficient 0;
+
+/*===================================数据链===================================*/
+// 给所有敌方载具附加激光靶
+{
+    private _target = _x;
+    if (side player getFriend side _target < 0.6) then {
+        _laser = createVehicle ["LaserTargetW", getPosATL _target];
+        _laser attachTo [_target, [0, 0, 1]];
+        west reportRemoteTarget [_laser, 3600];
+    };
+} forEach vehicles;
+
+// 向数据链通报所有载具
+{ west reportRemoteTarget [_x, 3600]; } forEach vehicles;
