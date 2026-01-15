@@ -36,21 +36,69 @@ _i = 0;
 /*
 	导弹发射脚本v1.0
 	作者：Asss_whom
-	简介：从头顶50米处向所有OPFOR方载具发射一枚导弹
+	简介：从头顶100米处向所有敌方载具发射一枚导弹
 */
 
 {
-    private _obj = _x;
-    if (side player getFriend side _obj < 0.6) then {
-        if (_obj isKindOf "Land" || _obj isKindOf "Ship") then {
-            _missile = createVehicle ["Missile_AGM_01_F", player modelToWorld [0, 0, 100], [], 0, "CAN_COLLIDE"];
-            _missile setDir getDir player;
-            _missile setMissileTarget [_obj, true];
+    private _target = _x;
+    if (side player getFriend side _target < 0.6) then {
+        if (_target isKindOf "Land" || _target isKindOf "Ship") then {
+            _missile = createVehicle ["ammo_Missile_Cruise_01", player modelToWorld [0, 0, 100], [], 0, "CAN_COLLIDE"];
+            _missile setDir player getDir _target;
+            _missile setMissileTarget [_target, true];
         };
-        if (_obj isKindOf "Air") then {
-            _missile = createVehicle ["Missile_AA_03_F", player modelToWorld [0, 0, 100], [], 0, "CAN_COLLIDE"];
-            _missile setDir getDir player;
-            _missile setMissileTarget [_obj, true];
+        if (_target isKindOf "Air") then {
+            _missile = createVehicle ["ammo_Missile_mim145", player modelToWorld [0, 0, 100], [], 0, "CAN_COLLIDE"];
+            _missile setDir player getDir _target;
+            _missile setMissileTarget [_target, true];
+        };
+    };
+} forEach vehicles;
+
+/*
+	空战发射脚本v1.0
+	作者：Asss_whom
+	简介：从载具下方5米向所有敌方载具发射一枚导弹
+*/
+_jet = vehicle this;
+{
+    private _target = _x;
+    if (side this getFriend side _target < 0.6) then {
+        if (side this == blufor) then {
+            if (_target isKindOf "Land" || _target isKindOf "Ship") then {
+                _missile = createVehicle ["Missile_AGM_02_F", player modelToWorld [0, 0, -5], [], 0, "CAN_COLLIDE"];
+                _missile setDir getDir _jet;
+                _missile setMissileTarget [_target, true];
+            };
+            if (_target isKindOf "Air") then {
+                _missile = createVehicle ["ammo_Missile_AMRAAM_D", player modelToWorld [0, 0, -5], [], 0, "CAN_COLLIDE"];
+                _missile setDir getDir _jet;
+                _missile setMissileTarget [_target, true];
+            };
+        };
+        if (side this == opfor) then {
+            if (_target isKindOf "Land" || _target isKindOf "Ship") then {
+                _missile = createVehicle ["Missile_AGM_01_F", player modelToWorld [0, 0, -5], [], 0, "CAN_COLLIDE"];
+                _missile setDir getDir _jet;
+                _missile setMissileTarget [_target, true];
+            };
+            if (_target isKindOf "Air") then {
+                _missile = createVehicle ["ammo_Missile_AA_R77", player modelToWorld [0, 0, -5], [], 0, "CAN_COLLIDE"];
+                _missile setDir getDir _jet;
+                _missile setMissileTarget [_target, true];
+            };
+        };
+        if (side this == independent) then {
+            if (_target isKindOf "Land" || _target isKindOf "Ship") then {
+                _missile = createVehicle ["Missile_AGM_02_F", player modelToWorld [0, 0, -5], [], 0, "CAN_COLLIDE"];
+                _missile setDir getDir _jet;
+                _missile setMissileTarget [_target, true];
+            };
+            if (_target isKindOf "Air") then {
+                _missile = createVehicle ["ammo_Missile_AMRAAM_C", player modelToWorld [0, 0, -5], [], 0, "CAN_COLLIDE"];
+                _missile setDir getDir _jet;
+                _missile setMissileTarget [_target, true];
+            };
         };
     };
 } forEach vehicles;
