@@ -1,2 +1,3 @@
 # ARMA3-Scripts-Collection
-My ARMA3 Scripts Memo.
+
+武装突袭3脚本备忘录，包含自己写的与搜集整合的资料。

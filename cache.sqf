@@ -61,3 +61,16 @@ player setUnitRecoilCoefficient 0;
 
 // 向数据链通报所有载具
 { west reportRemoteTarget [_x, 3600]; } forEach vehicles;
+
+// 强制小队知晓200米内所有敌人
+_my_group = group player;
+{
+    private _obj = _x;
+    if (side player getFriend side _obj < 0.6) then {
+        _my_group reveal [_obj, 4];
+    };
+} forEach nearestObjects [player, ["CAManBase", "Air", "Ship", "LandVehicle"], 200];
+
+/*===================================技能===================================*/
+// 设置小队成员满技能
+{ _x setSkill ["general", 1]; } forEach units player;
