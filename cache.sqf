@@ -40,6 +40,9 @@ player setAnimSpeedCoef 1;
 // 打开虚拟军火库
 ["Open", [true]] call BIS_fnc_arsenal;
 
+// 打开虚拟载具库
+["Open", true] call BIS_fnc_garage;
+
 /*===================================耐力===================================*/
 // 设置关闭耐力系统
 player enableStamina false;
@@ -74,3 +77,4 @@ _my_group = group player;
 /*===================================技能===================================*/
 // 设置小队成员满技能
 { _x setSkill ["general", 1]; } forEach units player;
+
