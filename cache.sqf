@@ -123,3 +123,6 @@ this removeMagazinesTurret ["12Rnd_230mm_rockets",[0]];
 this removeWeaponTurret ["rockets_230mm_GAT",[0]];
 this addMagazineTurret ["12Rnd_230mm_rockets_cluster",[0]];
 this addWeaponTurret ["rockets_230mm_GAT",[0]];
+
+// 加载弹药
+this loadMagazine [[0], "weapon_VLS_01", "magazine_Missiles_Cruise_01_Cluster_x18"];
