@@ -90,3 +90,36 @@ _my_group = group player;
         waitUntil { sleep 0.5; unitReady gunner _gun };
     } forEach _targets;
 };
+
+// 火炮区域随机覆盖（左上 -> 右下）
+[BIS_GUN, [POS_TL, POS_BR], 10] spawn {
+    params ["_gun", "_area", "_rounds"];
+    
+    _gun addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+    private _mag = (getArtilleryAmmo [_gun]) select 0;
+    
+    private _tl = _area select 0;
+    private _br = _area select 1;
+    
+    private _minX = (_tl select 0) min (_br select 0);
+    private _maxX = (_tl select 0) max (_br select 0);
+    private _minY = (_tl select 1) min (_br select 1);
+    private _maxY = (_tl select 1) max (_br select 1);
+    
+    for "_i" from 1 to _rounds do {
+        private _pos = [
+            _minX + random (_maxX - _minX),
+            _minY + random (_maxY - _minY),
+            0
+        ];
+        
+        _gun doArtilleryFire [_pos, _mag, 1];
+        waitUntil { sleep 0.5; unitReady gunner _gun };
+    };
+};
+
+// 添加230mm集束火箭弹
+this removeMagazinesTurret ["12Rnd_230mm_rockets",[0]];
+this removeWeaponTurret ["rockets_230mm_GAT",[0]];
+this addMagazineTurret ["12Rnd_230mm_rockets_cluster",[0]];
+this addWeaponTurret ["rockets_230mm_GAT",[0]];
