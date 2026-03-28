@@ -78,3 +78,15 @@ _my_group = group player;
 // 设置小队成员满技能
 { _x setSkill ["general", 1]; } forEach units player;
 
+/*===================================火炮===================================*/
+// 火炮定点打击多目标
+[BIS_GUN, [BIS_TGT1, BIS_TGT2, BIS_TGT3], 5] spawn {
+    params ["_gun", "_targets", "_rounds"];
+    
+    _gun addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+    private _mag = (getArtilleryAmmo [_gun]) select 0;
+    {
+        _gun doArtilleryFire [getPos _x, _mag, _rounds];
+        waitUntil { sleep 0.5; unitReady gunner _gun };
+    } forEach _targets;
+};
