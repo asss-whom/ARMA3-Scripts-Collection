@@ -98,6 +98,34 @@ _my_group = group player;
     } forEach _units;
 }
 
+// 轰炸脚本
+[BIS_BOMBER, [16664.783, 12295.32], 5, 0.15] spawn {
+    params ["_plane","_targetPos","_count","_delay"];
+
+    _g = 9.8;
+
+    waitUntil {
+        private _pos = getPosASL _plane;
+        private _alt = _pos select 2;
+
+        private _v = velocity _plane;
+        private _speed = vectorMagnitude _v;
+        private _t = sqrt (2 * _alt / _g) * 1.25;
+        private _d = _speed * _t;
+
+        private _curDist = _pos distance2D _targetPos;
+
+        _curDist < _d
+    };
+
+    for "_i" from 1 to _count do {
+        _bomb = createVehicle ["Bo_GBU12_LGB", getPos _plane];
+        _bomb setDir getDir _plane;
+        _bomb setVelocity (velocity _plane);
+        sleep _delay;
+    };
+};
+
 /*===================================火炮===================================*/
 // 火炮定点打击多目标
 [BIS_GUN, [BIS_TGT1, BIS_TGT2, BIS_TGT3], 5] spawn {
