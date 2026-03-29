@@ -80,17 +80,13 @@ _my_group = group player;
 
 /*===================================空投===================================*/
 // 空投所有客舱乘员
-[] spawn {
-    BIS_PLANE flyInHeight 300;
+_units = (fullCrew [BIS_PLANE, "cargo", true]) apply {_x select 0};
 
-    _units = (fullCrew [BIS_PLANE, "cargo", true]) apply {_x select 0};
-
-    {
-        unassignVehicle _x;
-        moveOut _x;
-        _x addBackpack "B_Parachute";
-    } forEach _units;
-}
+{
+    unassignVehicle _x;
+    moveOut _x;
+    _x addBackpack "B_Parachute";
+} forEach _units;
 
 /*===================================火炮===================================*/
 // 火炮定点打击多目标
