@@ -90,12 +90,6 @@ _my_group = group player;
         moveOut _x;
         _x addBackpack "B_Parachute";
     } forEach _units;
-
-    sleep 0.5;
-
-    {
-        _x action ["OpenParachute", _x];
-    } forEach _units;
 }
 
 /*===================================火炮===================================*/
