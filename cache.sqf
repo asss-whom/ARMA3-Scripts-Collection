@@ -78,6 +78,26 @@ _my_group = group player;
 // 设置小队成员满技能
 { _x setSkill ["general", 1]; } forEach units player;
 
+/*===================================空投===================================*/
+// 空投所有客舱乘员
+[] spawn {
+    BIS_PLANE flyInHeight 300;
+
+    _units = (fullCrew [BIS_PLANE, "cargo", true]) apply {_x select 0};
+
+    {
+        unassignVehicle _x;
+        moveOut _x;
+        _x addBackpack "B_Parachute";
+    } forEach _units;
+
+    sleep 0.5;
+
+    {
+        _x action ["OpenParachute", _x];
+    } forEach _units;
+}
+
 /*===================================火炮===================================*/
 // 火炮定点打击多目标
 [BIS_GUN, [BIS_TGT1, BIS_TGT2, BIS_TGT3], 5] spawn {
