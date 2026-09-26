@@ -136,3 +136,18 @@ this addWeaponTurret ["rockets_230mm_GAT",[0]];
 
 // 加载弹药
 this loadMagazine [[0], "weapon_VLS_01", "magazine_Missiles_Cruise_01_Cluster_x18"];
+
+// 尚未验证的CAS脚本
+_position = [1000, 2000, 60];
+_direction = 0;
+_vehicle = "B_Plane_CAS_01_F";
+_type = 2;
+
+_logic = "Logic" createVehicleLocal _position;
+_logic setDir _direction;
+_logic setVariable ["vehicle", _vehicle];
+_logic setVariable ["type", _type];
+
+[_logic, nil, true] call BIS_fnc_moduleCAS;
+
+deleteVehicle _logic;
