@@ -138,7 +138,7 @@ this addWeaponTurret ["rockets_230mm_GAT",[0]];
 this loadMagazine [[0], "weapon_VLS_01", "magazine_Missiles_Cruise_01_Cluster_x18"];
 
 /*===================================CAS===================================*/
-// 按照步长网格均匀CAS
+// 按照步长网格均匀CAS(type 0-3)
 private _cornerA = [5000, 3000];
 private _cornerC = [6000, 4000];
 
@@ -151,7 +151,7 @@ private _ymax = (_cornerA select 1) max (_cornerC select 1);
 private _z = 60;
 private _direction = 0;
 private _vehicle = "B_Plane_CAS_01_F";
-private _type = 4;
+private _type = 3;
 private _step = 200;
 
 for "_x" from _xmin to _xmax step _step do {
