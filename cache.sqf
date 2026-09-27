@@ -138,35 +138,19 @@ this addWeaponTurret ["rockets_230mm_GAT",[0]];
 this loadMagazine [[0], "weapon_VLS_01", "magazine_Missiles_Cruise_01_Cluster_x18"];
 
 /*===================================CAS===================================*/
-// 按照步长网格均匀CAS(type 0-3)
-private _cornerA = [5000, 3000];
-private _cornerC = [6000, 4000];
+// BIS_fnc_moduleCAS使用方法
+[] spawn {
+    _position = [1000, 2000, 60];
+    _direction = 0;
+    _vehicle = "B_Plane_CAS_01_F";
+    _type = 2;
 
-private _xmin = (_cornerA select 0) min (_cornerC select 0);
-private _xmax = (_cornerA select 0) max (_cornerC select 0);
+    _logic = "Logic" createVehicleLocal _position;
+    _logic setDir _direction;
+    _logic setVariable ["vehicle", _vehicle];
+    _logic setVariable ["type", _type];
 
-private _ymin = (_cornerA select 1) min (_cornerC select 1);
-private _ymax = (_cornerA select 1) max (_cornerC select 1);
+    [_logic, nil, true] call BIS_fnc_moduleCAS;
 
-private _z = 60;
-private _direction = 0;
-private _vehicle = "B_Plane_CAS_01_F";
-private _type = 3;
-private _step = 200;
-
-for "_x" from _xmin to _xmax step _step do {
-    for "_y" from _ymin to _ymax step _step do {
-        [_x, _y, _z, _direction, _vehicle, _type] spawn {
-            params ["_x", "_y", "_z", "_direction", "_vehicle", "_type"];
-
-            private _logic = "Logic" createVehicleLocal [_x, _y, _z];
-            _logic setDir _direction;
-            _logic setVariable ["vehicle", _vehicle];
-            _logic setVariable ["type", _type];
-
-            [_logic, nil, true] call BIS_fnc_moduleCAS;
-
-            deleteVehicle _logic;
-        };
-    };
+    deleteVehicle _logic;
 };
